@@ -9,6 +9,7 @@
   <div v-for="(p, i) in products" :key="i">
     <h4 :style="스타일">{{ p[0] }}</h4>
     <p> {{ p[1] }} 만원 </p> 
+    <button @click="plus_num(i)">매물신고</button> <span>신고수: {{ num[i] }}</span>
   </div>
 
 </template>
@@ -28,11 +29,18 @@ export default {
           ['마포구원품', '80']
       ],
       menu: ['Home', 'Shop', 'About'],
+      num : [0, 0, 0],
+    }
+  },
+  methods : {
+    plus_num(i){
+      this.num[i]++;
     }
   },
   components: {
   }
 }
+
 </script>
 
 <style>
