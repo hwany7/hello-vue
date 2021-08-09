@@ -12,10 +12,10 @@
     <a v-for="(m, i) in menu" :key="i">{{ m }}</a>
   </div>
 
-  <div v-for="(p, i) in products" :key="i">
-    <img @click="open_modal = ture" src="./assets/room0.jpg" class="room-img">
-    <h4 :style="스타일">{{ p[0] }}</h4>
-    <p> {{ p[1] }} 만원 </p> 
+  <div v-for="(p, i) in onerooms" :key="i">
+    <img @click="open_modal = ture" :src="p.image" class="room-img">
+    <h4 :style="스타일">{{ p.title }}</h4>
+    <p> {{ p.price }} 만원 </p> 
     <button @click="plus_num(i)">매물신고</button> <span>신고수: {{ num[i] }}</span>
   </div>
 
@@ -24,10 +24,13 @@
 
 <script>
 
+import data from './assets/oneroom.js';
+
 export default {
   name: 'App',
   data(){
     return {
+      onerooms : data,
       스타일 : 'color : red',
       products : [
           ['역삼동원룸', '60', './assets/room0.jpg'], 
@@ -35,7 +38,7 @@ export default {
           ['마포구원품', '80', './assets/room2.jpg']
       ],
       menu: ['Home', 'Shop', 'About'],
-      num : [0, 0, 0],
+      num : [0, 0, 0, 0, 0, 0],
       open_modal : false,
     }
   },
